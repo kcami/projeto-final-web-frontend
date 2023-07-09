@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import Leitos from './leitos'
-import styles from './page.module.css'
+import Leitos from '../components/leitos'
+import styles from '../styles/page.module.css'
 
 export default function Home() {
   const legenda = [
