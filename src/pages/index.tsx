@@ -1,19 +1,28 @@
 // 'use client';
-import 'bootstrap/dist/css/bootstrap.css'
 import Head from "next/head";
-import "../styles/login.css";
-import { ChangeEvent, useState } from "react";
+import styles from "../styles/login.module.css";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
+import { authContext } from '@/contexts/authenticationContext';
+import Link from "next/link";
+import useAuth from "@/services/authenticationRequests";
 
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {token, setToken} = authContext();
+  const {actions} = useAuth();
+  
+  useEffect(() => {
+    actions.login({medical_register: "string", password: "string", role: "string"})
+  })
+  console.log(token);
   //const [showPassword, setShowPassword] = useState(false);
   //const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -31,7 +40,7 @@ export default function Login() {
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
-      <Container className="w-75 shadow">
+      <Container className={`${styles.container} w-75 shadow`}>
         <Row className="pl-5">
           <Col className='p-5'>
             <div className='d-flex justify-content-center'>
@@ -76,9 +85,9 @@ export default function Login() {
                 <p className='text-white m-0'>Login</p>
               </Button>
             </Row>
-            <p>Ainda não tem conta? <a href='#' className="text-primary">Faça seu cadastro!</a></p>
+            <p>Ainda não tem conta? <Link href="/cadastro">Faça seu cadastro!</Link></p>
           </Col>
-          <Col className='p-0 pt-4 pb-4 img-container d-xl-flex justify-content-center d-none d-xl-block '>
+          <Col className={`p-0 pt-4 pb-4 ${styles.imgContainer} d-xl-flex justify-content-center d-none d-xl-block `}>
             <Image src='./images/login.svg' />
           </Col>
         </Row>
