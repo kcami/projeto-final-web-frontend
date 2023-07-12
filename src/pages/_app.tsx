@@ -1,7 +1,7 @@
-import "bootstrap/dist/css/bootstrap.css";
+import "../styles/customBootstrap.scss";
 import "../styles/globals.css";
 
-import { AuthProvider } from "@/contexts/authenticationContext"
+import { AuthProvider } from "@/contexts/authenticationContext";
 
 function MyApp({ Component, pageProps }) {
   return (
