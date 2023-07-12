@@ -4,7 +4,7 @@ export default function Coluna(props: any){
             {props.props.map((item: any,i: any) => {
                 return (
                     <>
-                        <div className={item.status}></div>
+                        <div key={i} className={item.status}></div>
                     </>
                 )
             })}

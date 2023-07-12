@@ -1,21 +1,32 @@
-.main {
+.navbar{
+  background-color:#0D92CB;
+  height: 20vh;
+  align-items: baseline;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  min-height: 100vh;
-  position: relative;
 }
 
+.logo{
+  
+  
+}
 
+.container{
+  margin-top: 0;
+}
 
-.head{
-  background-color: blue;
+.pageWrapper{
+  background-color: #fff;
+  width: 100vw;
+}
+
+.pageWrapperContent{
+  margin-top: 26vh;
+  height: 74vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 30px 20px 70px 20px;
-  width: 100%;
+  justify-content: center;
 }
 
 .head ul{
@@ -46,23 +57,28 @@
 }
 
 .legenda{
-  background-color: rgb(154, 154, 247);
+  background-color: #A4CFE1;
+  
+  padding: 25px 40px;
+  border-radius: 1em;
+  
+  color: #000;
+}
+
+.listGroup{
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  padding: 25px 40px;
-  width: 80%;
-  border-radius: 2em;
-  position: absolute;
-  top: 100px;
 }
 
-.legenda .itemLegenda{
+.itemLegenda{
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: row;
+  background-color: transparent;
+  border: none;
 }
 
 .legenda .itemLegenda div{
@@ -70,7 +86,7 @@
   height: 50px;
   border-radius: 10px;
   padding: 15px;
-  border-style: dashed;
+  
   margin-right: 10px;
 }
 
@@ -91,14 +107,12 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  width: 80%;
+  width: 100%;
   margin-bottom: 70px;
 }
 
 .content > div{
   padding: 10px;
-  border: 2px dashed;
-  border-radius: 7px;
 }
 
 .content div div{
