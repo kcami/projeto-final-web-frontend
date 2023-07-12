@@ -1,16 +1,3 @@
-.navbar{
-  background-color:#0D92CB;
-  height: 20vh;
-  align-items: baseline;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.logo{
-  
-  
-}
 
 .container{
   margin-top: 0;
@@ -27,66 +14,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.head ul{
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.head ul li{
-  color: #000;
-  font-weight: bold;
-  margin-left: 20px;
-  text-decoration: underline;
-}
-
-.head ul li:last-child{
-  padding: 15px 10px;
-  background-color: aqua;
-  color: #fff;
-  border-radius: 7px;
-  text-decoration: none;
-}
-
-.head ul li:last-child:hover{
-  opacity: 0.8;
-  transition: 0.3s ease-in-out opacity;
-}
-
-.legenda{
-  background-color: #A4CFE1;
-  
-  padding: 25px 40px;
-  border-radius: 1em; 
-  color: #000;
-}
-
-.listGroup{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-}
-
-.itemLegenda{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: row;
-  background-color: transparent;
-  border: none;
-}
-
-.legenda .itemLegenda div{
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  padding: 15px;
-  
-  margin-right: 10px;
 }
 
 .green{

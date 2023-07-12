@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <Container className={`${styles.pageWrapper}`}>
-      <Header />
+      <Header linkText={"Administrar Solicitacões"} pageType={1} legendType={2} legendText={"Testando"}/>
       
       <Container className={`${styles.pageWrapperContent}`}>
       <Leitos />

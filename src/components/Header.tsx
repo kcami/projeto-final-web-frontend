@@ -1,47 +1,30 @@
-import {Navbar,Container,NavbarBrand, Image, Nav, ListGroup, NavLink} from 'react-bootstrap';
+import {Navbar,Container,NavbarBrand, Image, Nav, ListGroup, NavLink, Button} from 'react-bootstrap';
 import styles from '../styles/page.module.css';
-export default function Header(){
-    const legenda = [
-        {
-          color: styles.green,
-          texto: "UTIs disponiveis"
-        },
-        {
-          color: styles.yellow,
-          texto: "UTIs em limpeza"
-        },
-        {
-          color: styles.red,
-          texto: "UTIs ocupadas"
-        }
-      ]
+import headerStyle from '../styles/header.module.css';
+import Legend from '../components/Legend';
+
+export default function Header(props: { linkText: string, pageType: number, legendType: number, legendText: string }){
+
     return (
-        <Navbar expand="lg" fixed="top" className={`${styles.navbar}`}>
+        <Navbar expand="lg" fixed="top" className={`${headerStyle.navbar}`} bg="bluePrimary">
             <Container className={`${styles.container}`}>
-                <NavbarBrand className={`${styles.logo}`}>
+                <NavbarBrand >
                     <Image width={"150px"} src='./images/Rectangle_2.png' />
                 </NavbarBrand>
-                <Nav>
-                    <NavLink>Perfil</NavLink>
-                    <NavLink>Sair</NavLink>
+                <Nav className={`${headerStyle.navbar_nav}`}>
+                    {
+                    props.pageType == 1 && <NavLink href="/profile">Perfil</NavLink>
+                    }
+                    {
+                    props.pageType == 2 && <NavLink href="/home">Home</NavLink>
+                    }
+                    <NavLink href="#">Sair</NavLink>
+                    {
+                    (props.linkText != '' && props.pageType == 1) && <NavLink href="#"><Button variant="blueButtom" className={`${styles.blue_button}`}>{props.linkText}</Button></NavLink>
+                    }
                 </Nav>
             </Container>
-            <Container className={`${styles.legenda} w-100`}>
-                <ListGroup className={`${styles.listGroup} w-100`}>
-                    {legenda.map((element, i) => {
-                        return (
-
-                            <ListGroup.Item key={i} className={`${styles.itemLegenda}`}>
-
-                                <div className={`${element.color}`}></div>
-                                {element.texto}
-
-                            </ListGroup.Item>
-
-                        )
-                    })}
-                </ListGroup>
-            </Container>
+            <Legend pageType={props.legendType} componentText={props.legendText}/>
         </Navbar>
         )
 }
