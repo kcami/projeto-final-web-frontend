@@ -89,7 +89,7 @@ export default function Login() {
                   Esqueceu sua senha?
                 </a>
               </p>
-              <Button variant='blueBottom' className='m-2 shadow'>
+              <Button variant='blueButtom' className='m-2 shadow'>
                 <p className='text-white m-0'>Login</p>
               </Button>
             </Row>
