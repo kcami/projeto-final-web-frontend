@@ -1,3 +1,58 @@
 .profile_wrapper{
-    width: 100vw;
+    width: 80vw;
+    position: fixed;
+    top: 6.5vw;
+    z-index: 2000;
+    left: 8vw;
+    border-radius: 5px;
+    padding: 35px;
+}
+
+.profile_wrapper h6{
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.content_wrapper{
+    border-radius: 28px;
+    border: solid 1px #0D92CB;
+    padding: 30px;
+}
+
+.edit_button{
+    border-radius: 20px;
+    border: solid 1px #0D92CB;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.profile_description{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.info_wrapper{
+    width: 75%;
+}
+
+.first_row{
+    margin-bottom: 30px;
+}
+
+.formLabel{
+    font-weight: bold;
+}
+
+.formGroup{
+    margin-bottom: 30px;
+}
+
+.formControl{
+    background-color: #A4CFE1;
+    border: solid 1px #0D92CB;
 }
