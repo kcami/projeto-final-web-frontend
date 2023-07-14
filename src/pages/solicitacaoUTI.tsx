@@ -15,68 +15,133 @@ import { useForm, FormProvider } from "react-hook-form";
 import HookSelect from "@/components/ReactHookForm/HookSelect";
 import { AuthLogin } from "@/@types/auth";
 import Header from "@/components/Header";
+import useBedsRequests from "@/services/utiBedsRequests";
+import { RegisterRequestUTI, RegisterUTI } from "@/@types/utiBeds";
+import { utiBedsContext } from "@/contexts/UTIBedsContext";
 
-
-export default function Login() {
-  const { token, setToken } = authContext();
-  const { actions } = useAuth();
+export default function solicitacaoUTI() {
+  const { token, setToken, id } = authContext();
+  const { selectedUtisBeds } = utiBedsContext();
+  const { actions } = useBedsRequests();
   const methods = useForm();
 
   useEffect(() => {}, []);
 
-  const roles = [
-    { label: "Médico da UTI", value: "MEDICO_UTI" },
-    { label: "Médico Geral", value: "MEDICO_GERAL" },
-    { label: "Enfermeiro", value: "ENFERMEIRO" },
+  const genders = [
+    { label: "Feminino", value: "Feminino" },
+    { label: "Masculino", value: "Masculino" },
   ];
 
+  const precautions = [
+    { label: "Padrão", value: "Padrao" },
+    { label: "Contato", value: "Contato" },
+    { label: "Respiratório gotícula", value: "Respiratorio_Goticula" },
+    { label: "Respiratório aerossol", value: "Respiratory_Aerossol" },
+  ];
+
+  const suports = [
+    { label: "Droga Vasoativa", value: "Droga Vasoativa" },
+    { label: "Ventilação Mecânica", value: "Ventilação Mecânica" },
+    { label: "Morte Encefálica", value: "Morte Encefálica" },
+    { label: "Hemodiálise", value: "Hemodiálise" },
+    { label: "Marcapasso", value: "Marcapasso" },
+  ];
+  const priorities = [
+    { label: "1", value: 1 },
+    { label: "2", value: 2 },
+    { label: "3", value: 3 },
+    { label: "4", value: 4 },
+    { label: "5", value: 5 },
+  ];
+  console.log(id);
+
   return (
-    <div className={`vw-100 vh-100 d-flex justify-content-center align-items-center`}>
+    <div
+      className={`vw-100 vh-100 d-flex justify-content-center align-items-center mt-5`}
+    >
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
-      <Header path='/solicitacaoUTI' linkText={"Criar solicitações"} pageType={1} legendType={1} legendText={"Testando"}/>  
-      <Container className="mt-5 border border-blueSecondary border-2 rounded-3 ">
-          <Col className='p-5'>
-           
-              <FormProvider {...methods}>
-                <Form
-                  onSubmit={methods.handleSubmit((data) => {
-                    actions.login(data as AuthLogin);
-                  })}
-                >
+      <Header
+        path='/solicitacaoUTI'
+        returnTo="/homeGeral"
+        linkText={"Criar solicitações"}
+        pageType={2}
+        legendType={2}
+        legendText={"Formulário de solicitação de UTI"}
+      />
+      <Container className='border border-blueSecondary border-2 rounded-3 '>
+        <Col className='p-3'>
+          <FormProvider {...methods}>
+            <Form
+              onSubmit={methods.handleSubmit((data) => {
+                data.priority = Number(data.priority)
+                actions.post({...data as RegisterUTI, collaborator_id: id, uti_bed_id: selectedUtisBeds.id });
+                
+              })}
+            >
+              <Row>
+                <Col>
+                  <HookInput name='name' label='Nome' type='text' />
+                </Col>
+                <Col>
+                  <HookInput name='register' label='CPF' type='text' />
+                </Col>
+                <Col>
+                  <HookSelect text="" name='gender' label='Gênero' list={genders} />
+                </Col>
+                <Col>
                   <HookInput
-                    name='medical_register'
-                    label='Nome'
+                    name='birth_date'
+                    label='Data de nascimento'
                     type='text'
                   />
-                  <HookInput
-                    name='medical_register'
-                    label='Diagnósticos principais'
-                    type='text'
+                </Col>
+              </Row>
+              <HookInput
+                name='antecedents_comorbidities'
+                label='Antecedentes e comorbidades'
+                type='text'
+              />
+              <HookInput
+                name='main_deseases'
+                label='Diagnósticos principais'
+                type='text'
+              />
+              <HookSelect
+                name='precaution'
+                text=""
+                label='Precaução'
+                list={precautions}
+              />
+              <HookSelect
+                name='suport_needed'
+                text=""
+                label='Suporte necessário'
+                list={suports}
+              />
+              <Row className="align-items-end">
+                <Col>
+                  <HookSelect
+                    name='priority'
+                    text=""
+                    label='Prioridade'
+                    list={priorities}
                   />
-                  <HookSelect name='role' label='Cargo' list={roles} />
-
-                  <HookInput name='password' label='Senha' type='password' />
-                  <p>
-                    <a href='#' className='text-dark'>
-                      Esqueceu sua senha?
-                    </a>
-                  </p>
+                </Col>
+                <Col>
                   <Button
                     type='submit'
                     variant='blueButtom'
-                    className='my-2 shadow w-100'
+                    className='my-1 shadow w-25'
                   >
-                    <p className='text-white m-0'>Login</p>
+                    <p className='text-white m-0'>Enviar solicitação</p>
                   </Button>
-                </Form>
-              </FormProvider>
-              <p>
-                Ainda não tem conta?
-                <Link href='/cadastro'>Faça seu cadastro!</Link>
-              </p>
-          </Col>
+                </Col>
+              </Row>
+            </Form>
+          </FormProvider>
+        </Col>
       </Container>
     </div>
   );
