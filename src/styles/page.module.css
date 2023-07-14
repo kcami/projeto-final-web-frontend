@@ -4,7 +4,7 @@
 }
 
 .pageWrapper{
-  background-color: #fff;
+  background-color: #E4F1F9;
   width: 100vw;
 }
 
@@ -17,15 +17,15 @@
 }
 
 .green{
-  background-color: green;
+  background-color: #90D800;
 }
 
 .red{
-  background-color: red;
+  background-color: #D43333;
 }
 
 .yellow{
-  background-color: yellow;
+  background-color: #FFEA32;
 }
 
 .content{
