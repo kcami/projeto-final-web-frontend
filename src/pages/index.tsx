@@ -62,11 +62,6 @@ export default function Login() {
                   />
 
                   <HookInput name='password' label='Senha' type='password' />
-                  {/* <p>
-                    <a href='#' className='text-dark'>
-                      Esqueceu sua senha?
-                    </a>
-                  </p> */}
                   <Button
                     type='submit'
                     variant='blueButtom'
