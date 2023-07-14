@@ -43,7 +43,7 @@ export default function Leitos() {
                     ? styles.green
                     : element.status == "Limpeza"
                     ? styles.yellow
-                    : styles.red}`
+                    : styles.red} ${styles.rowHover}`
                 }
               ></Row>
             ))}
