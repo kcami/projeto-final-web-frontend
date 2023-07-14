@@ -12,15 +12,18 @@ import styles from "../styles/page.module.css";
 import headerStyle from "../styles/header.module.css";
 import Legend from "../components/Legend";
 import useAuth from "@/services/authenticationRequests";
+import Link from "next/link";
 
 export default function Header(props: {
   linkText: string;
   path: "/solicitacaoUTI" | "/handleSolicitacaoUTI" | "#";
+  returnTo: "/home" | "/homeGeral" | "/homeEnfermeiro"
   pageType: number;
   legendType: number;
   legendText: string;
 }) {
   const { actions } = useAuth();
+  console.log(props.returnTo)
   return (
     <Navbar
       expand='lg'
@@ -43,13 +46,13 @@ export default function Header(props: {
             </NavLink>
           )}
           {props.pageType == 2 && (
-            <NavLink
+            <Link
               className={`${headerStyle.navLink} d-flex justify-content-center`}
-              href='/home'
+              href={props.returnTo}
             >
               <Image src='./images/home.png' />
               Home
-            </NavLink>
+            </Link>
           )}
           <NavLink
             className={`${headerStyle.navLink} d-flex justify-content-center`}
@@ -59,14 +62,14 @@ export default function Header(props: {
             Sair
           </NavLink>
           {props.linkText != "" && props.pageType == 1 && (
-            <NavLink href={props.path}>
+            <Link href={props.path}>
               <Button
                 variant='blueButtom'
                 className={`${styles.blue_button} shadow-lg `}
               >
                 {props.linkText}
               </Button>
-            </NavLink>
+            </Link>
           )}
         </Nav>
       </Container>
