@@ -16,7 +16,7 @@ import Link from "next/link";
 
 export default function Header(props: {
   linkText: string;
-  path: "/solicitacaoUTI" | "/handleSolicitacaoUTI" | "#";
+  path: "/solicitacaoUTI" | "/lista" | "#";
   returnTo: "/home" | "/homeGeral" | "/homeEnfermeiro"
   pageType: number;
   legendType: number;
