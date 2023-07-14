@@ -13,12 +13,19 @@ export default function Header(props: { linkText: string, pageType: number, lege
                 </NavbarBrand>
                 <Nav className={`${headerStyle.navbar_nav}`}>
                     {
-                    props.pageType == 1 && <NavLink href="/profile">Perfil</NavLink>
+                    props.pageType == 1 && <NavLink className={`${headerStyle.navLink}`} href="/profile">
+                        <Image src='./images/account_circle.png'/>
+                        Perfil</NavLink>
                     }
                     {
-                    props.pageType == 2 && <NavLink href="/home">Home</NavLink>
+                    props.pageType == 2 && <NavLink className={`${headerStyle.navLink}`} href="/home">
+                        <Image src='./images/home.png'/>
+                        Home
+                        </NavLink>
                     }
-                    <NavLink href="#">Sair</NavLink>
+                    <NavLink className={`${headerStyle.navLink}`} href="#">
+                        <Image src='./images/exit_to_app.png' />
+                        Sair</NavLink>
                     {
                     (props.linkText != '' && props.pageType == 1) && <NavLink href="#"><Button variant="blueButtom" className={`${styles.blue_button}`}>{props.linkText}</Button></NavLink>
                     }
