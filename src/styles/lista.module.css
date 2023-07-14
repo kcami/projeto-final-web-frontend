@@ -1,0 +1,49 @@
+.column{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pageWrapperContent{
+    margin-top: 40vh;
+}
+
+.column span{
+    font-size: 16px;
+    text-align: top;
+}
+
+.column h4{
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+}
+
+.item{
+    padding: 10px;
+    margin: 7px 0;
+    border-radius: 15px;
+    border: 1px solid #0D92CB;
+}
+
+.one{
+    color: #DB0000;
+}
+
+.two{
+    color: #FF0000;
+}
+
+.three{
+    color: #E8DB65;
+}
+
+.four{
+    color: #40D433;
+}
+
+.five{
+    color: #009329;
+}
+

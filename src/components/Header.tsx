@@ -27,7 +27,7 @@ export default function Header(props: { linkText: string, pageType: number, lege
                         <Image src='./images/exit_to_app.png' />
                         Sair</NavLink>
                     {
-                    (props.linkText != '' && props.pageType == 1) && <NavLink href="#"><Button variant="blueButtom" className={`${styles.blue_button}`}>{props.linkText}</Button></NavLink>
+                    (props.linkText != '' && props.pageType == 1) && <NavLink href="/lista"><Button variant="blueButtom" className={`${styles.blue_button}`}>{props.linkText}</Button></NavLink>
                     }
                 </Nav>
             </Container>
