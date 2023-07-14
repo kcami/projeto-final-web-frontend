@@ -15,11 +15,12 @@ import useAuth from "@/services/authenticationRequests";
 
 export default function Header(props: {
   linkText: string;
+  path: "/solicitacaoUTI" | "/handleSolicitacaoUTI" | "#";
   pageType: number;
   legendType: number;
   legendText: string;
 }) {
-  const {actions} = useAuth();
+  const { actions } = useAuth();
   return (
     <Navbar
       expand='lg'
@@ -33,24 +34,36 @@ export default function Header(props: {
         </NavbarBrand>
         <Nav className={`${headerStyle.navbar_nav}`}>
           {props.pageType == 1 && (
-            <NavLink className={`${headerStyle.navLink} d-flex justify-content-center`} href='/profile'>
+            <NavLink
+              className={`${headerStyle.navLink} d-flex justify-content-center`}
+              href='/profile'
+            >
               <Image src='./images/account_circle.png' />
               Perfil
             </NavLink>
           )}
           {props.pageType == 2 && (
-            <NavLink className={`${headerStyle.navLink} d-flex justify-content-center`} href='/home'>
+            <NavLink
+              className={`${headerStyle.navLink} d-flex justify-content-center`}
+              href='/home'
+            >
               <Image src='./images/home.png' />
               Home
             </NavLink>
           )}
-          <NavLink className={`${headerStyle.navLink} d-flex justify-content-center`} onClick={actions.signOut} href='#'>
+          <NavLink
+            className={`${headerStyle.navLink} d-flex justify-content-center`}
+            onClick={actions.signOut}
+          >
             <Image src='./images/exit_to_app.png' />
             Sair
           </NavLink>
           {props.linkText != "" && props.pageType == 1 && (
-            <NavLink href='#'>
-              <Button variant='blueButtom' className={`${styles.blue_button} shadow-lg `}>
+            <NavLink href={props.path}>
+              <Button
+                variant='blueButtom'
+                className={`${styles.blue_button} shadow-lg `}
+              >
                 {props.linkText}
               </Button>
             </NavLink>
