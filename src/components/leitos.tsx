@@ -99,9 +99,6 @@ export default function Leitos(){
             <Coluna props={colunaLeitos3}/>
             <Coluna props={colunaLeitos4}/>
             <Coluna props={colunaLeitos5}/>
-            
-            
-            
         </div>
     )
 }

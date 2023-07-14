@@ -8,14 +8,9 @@ import {Image} from 'react-bootstrap';
 import logo from '../assets/Rectangle_2.png';
 import Header from '../components/Header';
 export default function Home() {
-  
-
-  
-
   return (
     <Container className={`${styles.pageWrapper}`}>
-      <Header linkText={"Administrar Solicitacões"} pageType={1} legendType={1} legendText={"Testando"}/>
-      
+      <Header linkText={"Administrar Solicitacões"} pageType={1} legendType={1} legendText={"Testando"}/>  
       <Container className={`${styles.pageWrapperContent}`}>
       <Leitos />
       </Container>

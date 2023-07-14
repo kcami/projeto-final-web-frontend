@@ -22,7 +22,7 @@ export default function Header(props: {
     <Navbar
       expand='lg'
       fixed='top'
-      className={`${headerStyle.navbar}`}
+      className={`${headerStyle.navbar} rounded-bottom`}
       bg='bluePrimary'
     >
       <Container className={`${styles.container}`}>
@@ -48,7 +48,7 @@ export default function Header(props: {
           </NavLink>
           {props.linkText != "" && props.pageType == 1 && (
             <NavLink href='#'>
-              <Button variant='blueButtom' className={`${styles.blue_button}`}>
+              <Button variant='blueButtom' className={`${styles.blue_button} shadow-lg `}>
                 {props.linkText}
               </Button>
             </NavLink>
