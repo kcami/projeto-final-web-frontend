@@ -10,23 +10,22 @@ O sistema em si possibilita a solicitacão de cadastro de novos usuários, cadas
 A meta principal deste projeto era gerar uma interface simples e funcional, que não necessitasse de grandes treinamentos por parte dos usuários e que ajudasse no dia a dia do hospital, já que a parte de administracão de leitos é algo muito custoso atualmente.
  
 ## Desenvoledores
-[Matheus Robusti Henriques Marqui](https://github.com/Mathenriques)
+- [Matheus Robusti Henriques Marqui](https://github.com/Mathenriques)
 
-[Camila]()
+- [Camila](https://github.com/kcami)
  
-[Isaac]()
+- [Isaac](https://github.com/isaac-prado)
 
-[Marcelo](https://github.com/marcelo-magalhaess)
+- [Marcelo](https://github.com/marcelo-magalhaess)
 
 ## Sobre o projeto
 
 Este projeto foi desenvolvido utilizando NextJs, que consiste em um super set do ReactJs, juntamente com React Bootstrap, para facilitar a implementacão de componentes e estilizacões.
 
-Para maiores informacões sobre as ferramentas utilizadas, a documentacão está disponível nos links:
+A documentação das ferramentas utilizadas está disponível nos links:
+- [Next.js](https://nextjs.org/) 
 
-[Next.js](https://nextjs.org/)
-
-[Bootstrap](https://react-bootstrap.netlify.app/)
+- [Bootstrap](https://react-bootstrap.netlify.app/)
 
 
 ## Como rodar
@@ -48,7 +47,7 @@ npm run dev
 
 ```
 
-Depois de todo esse procedimento, a aplicacão estará rodando em [http://localhost:3000](http://localhost:3000)
+Depois desse passo, a aplicação estará rodando e para ter acesso ao backend e ao banco de dados você deverá clonar o [repositório](https://github.com/Mathenriques/projeto-final-web)
 
 
 
