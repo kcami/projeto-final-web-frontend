@@ -25,7 +25,9 @@ export default function Login() {
   const { actions } = useAuth();
   const methods = useForm();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+
+  }, []);
 
   const roles = [
     { label: "Médico da UTI", value: "MEDICO_UTI" },
