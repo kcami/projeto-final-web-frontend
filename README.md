@@ -1,13 +1,19 @@
 # Projeto Final FrontEnd
 Projeto final da disciplina COM222 - Desenvolvimento de Sistemas Web da Universidade Federal de Itajubá.
 
-Esse projeto visa a criação de um sistema web para gerenciamento de leitos de UTI.
+## Objetivo do projeto
 
+O principal objetivo deste trabalho, focando principalmente neste repositório do front-end, foi desenvolver uma aplicacão simples, porém completa e que possibilitasse médicos e enfermeiros fazerem a gestão de leitos da UTI. 
+
+O sistema em si possibilita a solicitacão de cadastro de novos usuários, cadastro de solicitacões de vagas com descricão de cada paciente, com caso e gravidade e também possibilita sincronizacão do paciente com leito, gerando uma visualizacão de quais leitos estão disponíveis.
+
+A meta principal deste projeto era gerar uma interface simples e funcional, que não necessitasse de grandes treinamentos por parte dos usuários e que ajudasse no dia a dia do hospital, já que a parte de administracão de leitos é algo muito custoso atualmente.
+ 
 ## Desenvoledores
 [Matheus Robusti Henriques Marqui](https://github.com/Mathenriques)
 
 [Camila]()
-
+ 
 [Isaac]()
 
 [Marcelo](https://github.com/marcelo-magalhaess)
