@@ -1,77 +1,19 @@
-.main {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 100vh;
-  position: relative;
+
+.container{
+  margin-top: 0;
 }
 
-
-
-.head{
-  background-color: blue;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 30px 20px 70px 20px;
-  width: 100%;
+.pageWrapper{
+  background-color: #fff;
+  width: 100vw;
 }
 
-.head ul{
-  list-style: none;
+.pageWrapperContent{
+  margin-top: 26vh;
+  height: 74vh;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-}
-
-.head ul li{
-  color: #000;
-  font-weight: bold;
-  margin-left: 20px;
-  text-decoration: underline;
-}
-
-.head ul li:last-child{
-  padding: 15px 10px;
-  background-color: aqua;
-  color: #fff;
-  border-radius: 7px;
-  text-decoration: none;
-}
-
-.head ul li:last-child:hover{
-  opacity: 0.8;
-  transition: 0.3s ease-in-out opacity;
-}
-
-.legenda{
-  background-color: rgb(154, 154, 247);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  padding: 25px 40px;
-  width: 80%;
-  border-radius: 2em;
-  position: absolute;
-  top: 100px;
-}
-
-.legenda .itemLegenda{
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: row;
-}
-
-.legenda .itemLegenda div{
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  padding: 15px;
-  border-style: dashed;
-  margin-right: 10px;
+  justify-content: center;
 }
 
 .green{
@@ -91,14 +33,12 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  width: 80%;
+  width: 100%;
   margin-bottom: 70px;
 }
 
 .content > div{
   padding: 10px;
-  border: 2px dashed;
-  border-radius: 7px;
 }
 
 .content div div{

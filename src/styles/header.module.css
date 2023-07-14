@@ -1,0 +1,17 @@
+.navbar{
+    height: 20vh;
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .navbar_nav{
+    align-items: center;
+  }
+  
+  .blue_button{
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 30px;
+  }

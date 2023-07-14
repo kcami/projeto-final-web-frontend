@@ -86,13 +86,14 @@ body {
 }
 
 body {
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     rgba(13, 146, 203, 1) 0%,
     rgba(188, 242, 255, 1) 100%
-  );
+  ); */
+  background-color: #fff;
   display: flex;
-  width: 100vw;
+  width: 500vw;
   height: 100vh;
   align-items: center;
   justify-content: center;
