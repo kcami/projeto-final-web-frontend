@@ -28,7 +28,6 @@ export function UTIBedsProvider({ children }: ContextProps) {
     {} as UTIBed
   );
   const [requestOpen, setRequestOpen] = useState<boolean>(false);
-  const [requestsUTIs, setRequestsUTIs] = useState<RequestsUTIs[]>([]);
   const [selectedRequestsUTI, setSelectedRequestsUTI] = useState<RequestsUTIs>(
     {
       id: "4596f311-a9f6-43cc-9bc2-01f6c1880188",
@@ -58,6 +57,7 @@ export function UTIBedsProvider({ children }: ContextProps) {
       }
   }
   );
+  const [requestsUTIs, setRequestsUTIs] = useState<RequestsUTIs[]>([selectedRequestsUTI, selectedRequestsUTI]);
 
   return (
     <UTIBedsContext.Provider

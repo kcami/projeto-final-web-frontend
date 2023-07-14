@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import useBedsRequests from "@/services/utiBedsRequests";
 import { Col, Row } from "react-bootstrap";
 
+
 export default function Leitos() {
   const { actions } = useBedsRequests();
   async function getBeds() {
@@ -13,7 +14,7 @@ export default function Leitos() {
   useEffect(() => {
     getBeds();
   }, []);
-  const { utisBeds } = utiBedsContext();
+  const { utisBeds, setSelectedUtisBeds } = utiBedsContext();
   console.log(utisBeds);
   const colunaLeitos1 = [
     {
@@ -35,8 +36,9 @@ export default function Leitos() {
         <Col key={rowIndex} className="d-flex flex-column justify-content-center align-items-center">
           {utisBeds
             .slice(rowIndex * 5, rowIndex * 5 + 5)
-            .map((element, index) => (
-              <Row
+            .map((element, index) => {
+              {element.status == "Livre" ? setSelectedUtisBeds(element) : null}
+              return <Row
                 key={index}
                 className={
                   `${element.status == "Livre"
@@ -46,7 +48,7 @@ export default function Leitos() {
                     : styles.red} ${styles.rowHover}`
                 }
               ></Row>
-            ))}
+              })}
         </Col>
       ))}
     </div>

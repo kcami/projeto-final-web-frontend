@@ -17,10 +17,10 @@ export interface userActions {
 
 export const useBedsRequests = (): { loading: boolean; actions: userActions } => {
   const [loading, setLoading] = useState(true);
-  const { utisBeds, setUtisBeds } = utiBedsContext();
-  const { token } = authContext();
+  const { utisBeds, setUtisBeds, setRequestsUTIs, requestsUTIs } = utiBedsContext();
+  // const { token } = authContext();
 
-  //const token = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
 
   const config = {
     headers: {
@@ -76,8 +76,8 @@ export const useBedsRequests = (): { loading: boolean; actions: userActions } =>
         if (response.status === 200) {
           console.log("Oi")
           setLoading(false);
-          setUtisBeds(response.data.uti_beds);
-          console.log(utisBeds);
+          setRequestsUTIs(response.data.solicitations)
+          console.log(requestsUTIs);
         }
       } catch (err) {
         setLoading(false);
