@@ -10,10 +10,9 @@ import Header from '../components/Header';
 import { useEffect } from 'react';
 import useBedsRequests from '@/services/utiBedsRequests';
 export default function HomeGeral() {
-  
   return (
     <Container className={`${styles.pageWrapper}`}>
-      <Header path='/handleSolicitacaoUTI' linkText={"Administrar solicitações"} pageType={1} legendType={1} legendText={"Testando"}/>  
+      <Header path='/lista' returnTo={'/home'} linkText={"Administrar solicitações"} pageType={1} legendType={1} legendText={"Testando"}/>  
       <Container className={`${styles.pageWrapperContent}`}>
       <Leitos />
       </Container>

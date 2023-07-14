@@ -10,17 +10,18 @@ import { FormControl, InputGroup } from "react-bootstrap";
 
 interface listProps {
   label: string;
-  value: string;
+  value: number|string;
 }
 
 interface inputProps {
   name: string;
   label: string;
   list: listProps[];
+  text?: string;
   style?: string;
 }
 
-export default function HookSelect({ name, label, list, style }: inputProps) {
+export default function HookSelect({ name, label, list, style, text="Escolha o seu cargo" }: inputProps) {
   const { register, control } = useFormContext();
 
   return (
@@ -31,7 +32,8 @@ export default function HookSelect({ name, label, list, style }: inputProps) {
         field: { onChange, onBlur, value, ref },
         fieldState: { error },
       }) => (
-        <InputGroup hasValidation className="my-1">
+        <Form.Group className="my-1">
+          <Form.Label>{label}</Form.Label>
           <Form.Select
             onChange={(value) => {
               onChange(value.target.value);
@@ -41,7 +43,7 @@ export default function HookSelect({ name, label, list, style }: inputProps) {
             className={style}
             required
           >
-            <option>Escolha o seu cargo</option>
+            <option>{text}</option>
             {list.map((item) => (
               <option key={item.value} value={item.value}>
                 {item.label}
@@ -53,7 +55,7 @@ export default function HookSelect({ name, label, list, style }: inputProps) {
               {error.message}
             </FormControl.Feedback>
           )}
-        </InputGroup>
+        </Form.Group>
       )}
     />
   );

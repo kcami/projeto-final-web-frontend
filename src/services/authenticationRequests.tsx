@@ -26,7 +26,7 @@ export const useAuth = (): { loading: boolean; actions: userActions } => {
           setToken(response.data.token);
           setLoading(false);
           localStorage.setItem("token", response.data.token);
-          routes();
+          routes(response.data.token);
           AlertSucess("Login realizado com sucesso!");
         }
       } catch (err) {
