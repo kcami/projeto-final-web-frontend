@@ -1,107 +1,54 @@
-import Coluna from './coluna';
-import styles from '../styles/page.module.css'
+import Coluna from "./coluna";
+import styles from "../styles/page.module.css";
+import { utiBedsContext } from "@/contexts/UTIBedsContext";
+import { useEffect } from "react";
+import useBedsRequests from "@/services/utiBedsRequests";
+import { Col, Row } from "react-bootstrap";
 
-
-export default function Leitos(){
-    const colunaLeitos1 = [
-        {
-          status: styles.green
-        },
-        {
-          status: styles.green
-        },
-        {
-          status: styles.green
-        },
-        {
-          status: styles.green
-        },
-        {
-          status: styles.green
-        }
-      ]
-       
-      const colunaLeitos2 = [
-        {
-          status: styles.yellow
-        },
-        {
-          status: styles.yellow
-        },
-        {
-          status: styles.red
-        },
-        {
-          status: styles.yellow
-        },
-        {
-          status: styles.yellow
-        }
-      ]
-    
-      const colunaLeitos3 = [
-        {
-          status: styles.red
-        },
-        {
-          status: styles.green
-        },
-        {
-          status: styles.yellow
-        },
-        {
-          status: styles.yellow
-        },
-        {
-          status: styles.yellow
-        }
-      ]
-    
-      const colunaLeitos4 = [
-        {
-          status: styles.red
-        },
-        {
-          status: styles.yellow
-        },
-        {
-          status: styles.green
-        },
-        {
-          status: styles.yellow
-        },
-        {
-          status: styles.yellow
-        }
-      ]
-    
-      const colunaLeitos5 = [
-        {
-          status: styles.yellow
-        },
-        {
-          status: styles.green
-        },
-        {
-          status: styles.green
-        },
-        {
-          status: styles.green
-        },
-        {
-          status: styles.green
-        }
-      ]
-    return(
-        <div className={styles.content}>
-            <Coluna props={colunaLeitos1}/>
-            <Coluna props={colunaLeitos2}/>
-            <Coluna props={colunaLeitos3}/>
-            <Coluna props={colunaLeitos4}/>
-            <Coluna props={colunaLeitos5}/>
-            
-            
-            
-        </div>
-    )
+export default function Leitos() {
+  const { actions } = useBedsRequests();
+  async function getBeds() {
+    await actions.get();
+  }
+  useEffect(() => {
+    getBeds();
+  }, []);
+  const { utisBeds } = utiBedsContext();
+  console.log(utisBeds);
+  const colunaLeitos1 = [
+    {
+      status: "Livre",
+      styles: styles.green,
+    },
+    {
+      status: "Limpeza",
+      styles: styles.yellow,
+    },
+    {
+      status: "Ocupado",
+      styles: styles.red,
+    },
+  ];
+  return (
+    <div className={styles.content}>
+      {Array.from({ length: 6 }).map((_, rowIndex) => (
+        <Col key={rowIndex} className="d-flex flex-column justify-content-center align-items-center">
+          {utisBeds
+            .slice(rowIndex * 5, rowIndex * 5 + 5)
+            .map((element, index) => (
+              <Row
+                key={index}
+                className={
+                  `${element.status == "Livre"
+                    ? styles.green
+                    : element.status == "Limpeza"
+                    ? styles.yellow
+                    : styles.red} ${styles.rowHover}`
+                }
+              ></Row>
+            ))}
+        </Col>
+      ))}
+    </div>
+  );
 }

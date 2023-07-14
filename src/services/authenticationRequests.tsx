@@ -22,9 +22,9 @@ export const useAuth = (): { loading: boolean; actions: userActions } => {
       try {
         setLoading(true);
         const response = await axios.post(`${baseUrl}/authenticate`, body);
-        if (response.data) {
-          setLoading(false);
+        if (response.status == 201) {
           setToken(response.data.token);
+          setLoading(false);
           localStorage.setItem("token", response.data.token);
           routes();
           AlertSucess("Login realizado com sucesso!");
@@ -48,7 +48,6 @@ export const useAuth = (): { loading: boolean; actions: userActions } => {
   async function postUser(body: AuthCreate) {
     await new Promise(async (resolve) => {
       try {
-        console.log(body);
         setLoading(true);
         const response = await axios.post(
           `${baseUrl}/register-collaborator`,
@@ -57,7 +56,6 @@ export const useAuth = (): { loading: boolean; actions: userActions } => {
         router.push("/");
         AlertSucess("Solicitação de usuário criada com sucesso!");
       } catch (err) {
-        console.log("Deu errado!");
         setLoading(false);
         // AlertError("Não foi possível criar a solicitação de usuário!");
       }

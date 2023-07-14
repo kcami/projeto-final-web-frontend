@@ -1,3 +1,11 @@
+.background {
+  background: linear-gradient(
+    90deg,
+    rgba(13, 146, 203, 1) 0%,
+    rgba(188, 242, 255, 1) 100%
+  );
+}
+
 .container {
   background-color: white;
   border-radius: 28px;

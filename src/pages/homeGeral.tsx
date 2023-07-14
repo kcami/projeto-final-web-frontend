@@ -9,11 +9,11 @@ import logo from '../assets/Rectangle_2.png';
 import Header from '../components/Header';
 import { useEffect } from 'react';
 import useBedsRequests from '@/services/utiBedsRequests';
-export default function HomeGeral() {
+export default function Home() {
   
   return (
     <Container className={`${styles.pageWrapper}`}>
-      <Header path='/handleSolicitacaoUTI' linkText={"Administrar solicitações"} pageType={1} legendType={1} legendText={"Testando"}/>  
+      <Header path='/solicitacaoUTI' linkText={"Criar solicitações"} pageType={1} legendType={1} legendText={"Testando"}/>  
       <Container className={`${styles.pageWrapperContent}`}>
       <Leitos />
       </Container>

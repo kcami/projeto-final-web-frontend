@@ -29,18 +29,18 @@ export default function Cadastro() {
   ];
   
   return (
-    <>
+    <div className={`vw-100 vh-100 d-flex justify-content-center align-items-center ${styles.background}`}>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
-      <Container className={`${styles.container} w-90 shadow`}>
+      <Container className={`${styles.container} w-75 shadow`}>
         <Row className="pl-5">
           <Col className='py-3 px-5'>
             <div className='d-flex justify-content-center'>
               <Image width={"150px"} src='./images/logo.svg' />
             </div>
             
-            <Row>
+            <Row className="mt-4">
             <FormProvider {...methods}>
                 <Form
                   onSubmit={methods.handleSubmit((data) => {
@@ -72,7 +72,7 @@ export default function Cadastro() {
                   <Button
                     type='submit'
                     variant='blueButtom'
-                    className='my-2 shadow w-100'
+                    className='my-5 shadow w-100'
                   >
                     <p className='text-white m-0'>Solicitar cadastro</p>
                   </Button>
@@ -85,6 +85,6 @@ export default function Cadastro() {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 }
