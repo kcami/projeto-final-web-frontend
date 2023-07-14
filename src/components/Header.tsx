@@ -11,6 +11,7 @@ import {
 import styles from "../styles/page.module.css";
 import headerStyle from "../styles/header.module.css";
 import Legend from "../components/Legend";
+import useAuth from "@/services/authenticationRequests";
 
 export default function Header(props: {
   linkText: string;
@@ -18,6 +19,7 @@ export default function Header(props: {
   legendType: number;
   legendText: string;
 }) {
+  const {actions} = useAuth();
   return (
     <Navbar
       expand='lg'
@@ -42,7 +44,7 @@ export default function Header(props: {
               Home
             </NavLink>
           )}
-          <NavLink className={`${headerStyle.navLink} d-flex justify-content-center`} href='#'>
+          <NavLink className={`${headerStyle.navLink} d-flex justify-content-center`} onClick={actions.signOut} href='#'>
             <Image src='./images/exit_to_app.png' />
             Sair
           </NavLink>
