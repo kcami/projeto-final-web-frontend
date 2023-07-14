@@ -23,7 +23,7 @@ export default function InfoSolicitacao() {
       color = styles.five;
       break;
   }
-  
+
   return (
     <Collapse in={requestOpen} dimension='height'>
       <Container
@@ -62,10 +62,10 @@ export default function InfoSolicitacao() {
           </Row>
 
           <Row className={`${styles.rowButtons}`}>
-            <Button className={`${styles.button}`} variant='redButton'>
+            <Button className={`${styles.button}`} variant='greenButton'>
               Aceitar Solicitacão
             </Button>
-            <Button className={`${styles.button}`} variant='greenButton'>
+            <Button className={`${styles.button}`} variant='redButton'>
               Recusar Solicitacao
             </Button>
           </Row>

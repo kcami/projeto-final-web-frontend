@@ -5,14 +5,17 @@ import { AlertError } from "../components/AlertError";
 import { AlertSucess } from "../components/AlertSucess";
 import { authContext } from "@/contexts/authenticationContext";
 import router from "next/router";
-import { RegisterRequestUTI, UTIBeds } from "@/@types/utiBeds";
+import { RegisterRequestUTI, UTIBeds, changeUTIBed } from "@/@types/utiBeds";
 import { utiBedsContext } from "@/contexts/UTIBedsContext";
+import { changeRequest } from "@/@types/paciente";
 const baseUrl = "http://localhost:3333";
 
 export interface userActions {
   get: () => Promise<void>;
   post: (body: RegisterRequestUTI) => Promise<void>; // faz a solicitacao de uma vaga
   getRequestUTI: () => Promise<void>;
+  changeRequestStatus: (body: changeRequest) => Promise<void>;
+  changeUTIBedStatus: (body: changeUTIBed) => Promise<void>;
 }
 
 export const useBedsRequests = (): { loading: boolean; actions: userActions } => {
@@ -86,8 +89,44 @@ export const useBedsRequests = (): { loading: boolean; actions: userActions } =>
       }
     });
   }
+
+  async function changeRequestStatus(body: changeRequest): Promise<void> {
+    await new Promise(async (resolve) => {
+      try {
+        setLoading(true);
+        const response = await axios.put(`${baseUrl}/change-solicitation-status`, body, config);
+        if (response.status === 201) {
+          setLoading(false);
+          console.log("deu certo")
+          getRequestUTI();
+        }
+      } catch (err) {
+        setLoading(false);
+        console.log(err);
+        AlertError("Ocorreu um erro no login!");
+      }
+    });
+  }
+  async function changeUTIBedStatus(body: changeUTIBed): Promise<void> {
+    await new Promise(async (resolve) => {
+      try {
+        setLoading(true);
+        const response = await axios.put(`${baseUrl}/change-uti-bed-status`, body, config);
+        if (response.status === 201) {
+          setLoading(false);
+          console.log("deu certo")
+          await get();
+          console.log(setUtisBeds);
+        }
+      } catch (err) {
+        setLoading(false);
+        console.log(err);
+        AlertError("Ocorreu um erro no login!");
+      }
+    });
+  }
   
-  const actions = { get, post, getRequestUTI };
+  const actions = { get, post, getRequestUTI, changeRequestStatus, changeUTIBedStatus };
 
   return { loading, actions };
 };

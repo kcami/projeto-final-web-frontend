@@ -16,6 +16,10 @@
   width: 100vw;
 }
 
+.dropdownStyle {
+  border: #E4F1F9 0;
+}
+
 .pageWrapperContent{
   margin-top: 26vh;
   height: 74vh;
