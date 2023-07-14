@@ -25,9 +25,7 @@ export default function Login() {
   const { actions } = useAuth();
   const methods = useForm();
 
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
 
   const roles = [
     { label: "Médico da UTI", value: "MEDICO_UTI" },
@@ -36,11 +34,13 @@ export default function Login() {
   ];
 
   return (
-    <>
+    <div
+      className={`vw-100 vh-100 d-flex justify-content-center align-items-center ${styles.background}`}
+    >
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
-      <Container className={`${styles.container} w-75 shadow`}>
+      <Container className={`${styles.container} w-50 shadow`}>
         <Row className='pl-5'>
           <Col className='p-5'>
             <div className='d-flex justify-content-center'>
@@ -62,11 +62,11 @@ export default function Login() {
                   />
 
                   <HookInput name='password' label='Senha' type='password' />
-                  <p>
+                  {/* <p>
                     <a href='#' className='text-dark'>
                       Esqueceu sua senha?
                     </a>
-                  </p>
+                  </p> */}
                   <Button
                     type='submit'
                     variant='blueButtom'
@@ -78,7 +78,9 @@ export default function Login() {
               </FormProvider>
               <p>
                 Ainda não tem conta?
-                <Link href='/cadastro'>Faça seu cadastro!</Link>
+                <span className="text-primary">
+                  <Link href='/cadastro'> Faça seu cadastro!</Link>
+                </span>
               </p>
             </Row>
           </Col>
@@ -89,6 +91,6 @@ export default function Login() {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 }

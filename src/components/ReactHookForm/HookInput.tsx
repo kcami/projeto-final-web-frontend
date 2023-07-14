@@ -25,7 +25,7 @@ export default function HookInput({ name, label, type, style }: inputProps) {
         field: { onChange, onBlur, value, ref },
         fieldState: { error },
       }) => (
-        <Form.Group controlId={name}>
+        <Form.Group controlId={name} className="my-1">
           <Form.Label>{label}</Form.Label>
           <Form.Control name={name} type={type} className={style} onChange={(value) => onChange(value)}/>
         </Form.Group>

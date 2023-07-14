@@ -3,6 +3,14 @@
   margin-top: 0;
 }
 
+.rowHover {
+  transition: transform 0.2s ease-in-out;
+}
+
+.rowHover:hover {
+  transform: scale(0.95);
+}
+
 .pageWrapper{
   background-color: #E4F1F9;
   width: 100vw;
@@ -42,9 +50,9 @@
 }
 
 .content div div{
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   margin: 10px 0px;
   border: 1px #000 solid;
-  border-radius: 10px;
+  border-radius: 5px;
 }

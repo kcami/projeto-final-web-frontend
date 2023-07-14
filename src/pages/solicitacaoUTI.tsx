@@ -14,6 +14,7 @@ import HookInput from "@/components/ReactHookForm/HookInput";
 import { useForm, FormProvider } from "react-hook-form";
 import HookSelect from "@/components/ReactHookForm/HookSelect";
 import { AuthLogin } from "@/@types/auth";
+import Header from "@/components/Header";
 
 
 export default function Login() {
@@ -30,30 +31,31 @@ export default function Login() {
   ];
 
   return (
-    <>
+    <div className={`vw-100 vh-100 d-flex justify-content-center align-items-center`}>
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
-      <Container className={`w-100 shadow`}>
-        <Row className='pl-5'>
+      <Header path='/solicitacaoUTI' linkText={"Criar solicitações"} pageType={1} legendType={1} legendText={"Testando"}/>  
+      <Container className="mt-5 border border-blueSecondary border-2 rounded-3 ">
           <Col className='p-5'>
-            <div className='d-flex justify-content-center'>
-              <Image width={"150px"} src='./images/logo.svg' />
-            </div>
-
-            <Row>
+           
               <FormProvider {...methods}>
                 <Form
                   onSubmit={methods.handleSubmit((data) => {
                     actions.login(data as AuthLogin);
                   })}
                 >
-                  <HookSelect name='role' label='Cargo' list={roles} />
                   <HookInput
                     name='medical_register'
-                    label='CRM/COREN'
+                    label='Nome'
                     type='text'
                   />
+                  <HookInput
+                    name='medical_register'
+                    label='Diagnósticos principais'
+                    type='text'
+                  />
+                  <HookSelect name='role' label='Cargo' list={roles} />
 
                   <HookInput name='password' label='Senha' type='password' />
                   <p>
@@ -74,10 +76,8 @@ export default function Login() {
                 Ainda não tem conta?
                 <Link href='/cadastro'>Faça seu cadastro!</Link>
               </p>
-            </Row>
           </Col>
-        </Row>
       </Container>
-    </>
+    </div>
   );
 }

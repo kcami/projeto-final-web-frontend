@@ -31,7 +31,7 @@ export default function HookSelect({ name, label, list, style }: inputProps) {
         field: { onChange, onBlur, value, ref },
         fieldState: { error },
       }) => (
-        <InputGroup hasValidation>
+        <InputGroup hasValidation className="my-1">
           <Form.Select
             onChange={(value) => {
               onChange(value.target.value);
