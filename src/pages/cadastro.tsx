@@ -9,31 +9,31 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
 import { authContext } from '@/contexts/authenticationContext';
+import { FormProvider, useForm } from "react-hook-form";
+import HookSelect from "@/components/ReactHookForm/HookSelect";
+import HookInput from "@/components/ReactHookForm/HookInput";
+import { AuthCreate, AuthLogin } from "@/@types/auth";
+import useAuth from "@/services/authenticationRequests";
 
-export default function Login() {
+export default function Cadastro() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const {token, setToken} = authContext();
+  const methods = useForm();
+  const { actions } = useAuth();
 
-  console.log(token);
-  //const [showPassword, setShowPassword] = useState(false);
-  //const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-  function handleEmailChange(event: ChangeEvent<HTMLInputElement>): void {
-    setEmail(event.target.value);
-    console.log(email)
-  }
-  function handlePasswordChange(event: ChangeEvent<HTMLInputElement>): void {
-    setPassword(event.target.value);
-    console.log(password)
-  }
+  const roles = [
+    { label: "Médico da UTI", value: "MEDICO_UTI" },
+    { label: "Médico Geral", value: "MEDICO_GERAL" },
+    { label: "Enfermeiro", value: "ENFERMEIRO" },
+  ];
   
   return (
     <>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
     </Head>
-      <Container className={`${styles.container} w-75 shadow`}>
+      <Container className={`${styles.container} w-90 shadow`}>
         <Row className="pl-5">
           <Col className='py-3 px-5'>
             <div className='d-flex justify-content-center'>
@@ -41,54 +41,47 @@ export default function Login() {
             </div>
             
             <Row>
-              <Form className="d-flex justify-content-center">
-                <Form.Check
-                  inline
-                  label='Enfermeiro'
-                  name='group1'
-                  type={"radio"}
-                  id={`radio-1`}
-                />
-                <Form.Check
-                  inline
-                  label='Médico'
-                  name='group1'
-                  type={"radio"}
-                  id={`radio-2`}
-                />
-                <Form.Check
-                  inline
-                  label='Médico da UTI'
-                  name='group1'
-                  type={"radio"}
-                  id={`radio-2`}
-                />
-              </Form>
-              <Form>
-                <Form.Label>Nome</Form.Label>
-                <Form.Control type='text' id='user' className="shadow-sm" onChange={handlePasswordChange} />
-                <Form.Label>Identificador (CRM/COREN)</Form.Label>
-                <Form.Control type='text' id='user' className="shadow-sm" onChange={handlePasswordChange} />
-                <Form.Label>CPF</Form.Label>
-                <Form.Control type='email' id='user' className="shadow-sm" onChange={handlePasswordChange} />
-                <Form.Label>Email</Form.Label>
-                <Form.Control type='text' id='user' className="shadow-sm" onChange={handlePasswordChange} />
-                <Form.Label>Senha</Form.Label>
-                <Form.Control
-                  type='password'
-                  id='password'
-                  aria-describedby='passwordHelpBlock'
-                  className="shadow-sm"
-                  onChange={handleEmailChange}
-                />
-              </Form>
-              <Button variant='primary' className="m-2 mt-3 shadow">
-                <p className='text-white m-0'>Solicitar cadastro</p>
-              </Button>
+            <FormProvider {...methods}>
+                <Form
+                  onSubmit={methods.handleSubmit((data) => {
+                    actions.postUser(data as AuthCreate);
+                  })}
+                >
+                  <HookSelect name='role' label='Cargo' list={roles} />
+                  <HookInput
+                    name='name'
+                    label='Nome'
+                    type='text'
+                  />
+                  <HookInput
+                    name='register'
+                    label='CPF'
+                    type='text'
+                  />
+                  <HookInput
+                    name='medical_register'
+                    label='CRM/COREN'
+                    type='text'
+                  />
+                  <HookInput
+                    name='email'
+                    label='E-mail'
+                    type='email'
+                  />
+                  <HookInput name='password' label='Senha' type='password' />
+                  <Button
+                    type='submit'
+                    variant='blueButtom'
+                    className='my-2 shadow w-100'
+                  >
+                    <p className='text-white m-0'>Solicitar cadastro</p>
+                  </Button>
+                </Form>
+              </FormProvider>
             </Row>
           </Col>
           <Col className={`p-0 pt-4 pb-4 ${styles.imgContainer} d-xl-flex justify-content-center d-none d-xl-block `}>
-            <Image src='./images/login.svg' />
+            <Image src='./images/login.svg' className="w-100" />
           </Col>
         </Row>
       </Container>

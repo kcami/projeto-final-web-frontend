@@ -10,6 +10,7 @@ const baseUrl = "http://localhost:3333";
 export interface userActions {
   login: (body: AuthLogin) => Promise<void>;
   postUser: (body: AuthCreate) => Promise<void>;
+  signOut: () => void;
 }
 
 export const useAuth = (): { loading: boolean; actions: userActions } => {
@@ -24,16 +25,12 @@ export const useAuth = (): { loading: boolean; actions: userActions } => {
         if (response.data) {
           setLoading(false);
           setToken(response.data.token);
-          console.log(token);
-          console.log("Oi")
           localStorage.setItem("token", response.data.token);
-          console.log("certo")
           routes();
           AlertSucess("Login realizado com sucesso!");
         }
       } catch (err) {
         setLoading(false);
-        console.log("erro")
         console.log(err);
         AlertError("Ocorreu um erro no login!");
       }
@@ -48,25 +45,26 @@ export const useAuth = (): { loading: boolean; actions: userActions } => {
     router.push("/");
   };
 
-
   async function postUser(body: AuthCreate) {
     await new Promise(async (resolve) => {
       try {
         console.log(body);
         setLoading(true);
-        const response = await axios.post(`${baseUrl}/register-collaborator`, body);
-        if (response.data) {
-          setLoading(false);
-          AlertSucess("Solicitação de usuário criada com sucesso!");
-        }
+        const response = await axios.post(
+          `${baseUrl}/register-collaborator`,
+          body
+        );
+        router.push("/");
+        AlertSucess("Solicitação de usuário criada com sucesso!");
       } catch (err) {
+        console.log("Deu errado!");
         setLoading(false);
         // AlertError("Não foi possível criar a solicitação de usuário!");
       }
     });
   }
 
-  const actions = { login, postUser };
+  const actions = { login, postUser, signOut };
 
   return { loading, actions };
 };

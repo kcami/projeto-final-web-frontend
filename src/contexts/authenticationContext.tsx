@@ -39,7 +39,7 @@ export function AuthProvider({ children }: AuthContextProps) {
           router.push("/homeEnfermeiro");
         }
       } else {
-        router.push("/login");
+        router.push("/");
       }
     }
   
