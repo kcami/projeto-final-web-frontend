@@ -19,6 +19,11 @@
     flex-direction: row;
 }
 
+.span{
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
 .label{
     font-weight: bold;
 
@@ -37,7 +42,7 @@
 .parecer{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     font-weight: bold;
     padding: 5px 10px;
     border: solid 1px #0D92CB;
@@ -66,4 +71,8 @@
 
 .five{
     color: #009329;
+}
+
+.displayNone{
+    display: none;
 }
